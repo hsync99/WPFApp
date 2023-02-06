@@ -10,7 +10,7 @@ namespace WPFApp.ViewModels
 {
     public  class BaseViewModel: INotifyPropertyChanged
     {
-        public IDataStore DataStore { get; }  
+        public DataStore DataStore = new DataStore();
         public BaseViewModel()
         {
 
