@@ -6,9 +6,8 @@
         xmlns:local="clr-namespace:WPFApp"
         xmlns:vm ="clr-namespace:WPFApp.ViewModels" d:DataContext="{d:DesignInstance Type=vm:LoginViewModel}"
         mc:Ignorable="d"
-        WindowState="Maximized"
-        WindowStyle="None"
-        DataContext="vm.LoginViewModel"
+        
+       
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#03252526" >
         <Image Source="Resources/network.png" Stretch="Fill"/>

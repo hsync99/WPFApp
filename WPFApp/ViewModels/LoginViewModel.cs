@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WPFApp.Views;
 using WPFApp.Models.UI;
 using WPFApp.Models;
 namespace WPFApp.ViewModels
@@ -43,11 +44,14 @@ namespace WPFApp.ViewModels
             }
         }
 
-        public void Login()
+        public async void Login()
         {
-            DataStore.Login(UserName, Password);
+        var user = await   DataStore.Login(UserName, Password);
+           MenuWindow menuWindow= new MenuWindow(user.ID);
+            menuWindow.ShowDialog();
+            
         }
-        public void Registration()
+        public async void Registration()
         {
             User u = new User();    
             u.Username= _userName;
@@ -57,7 +61,7 @@ namespace WPFApp.ViewModels
             u.Email = "test@gmail.com";
             u.Fname = "Test";
             u.Lname= "Test";
-            DataStore.Registration(u);
+        await    DataStore.Registration(u);
         }
         public LoginViewModel()
         {

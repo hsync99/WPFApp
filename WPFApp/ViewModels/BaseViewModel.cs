@@ -11,6 +11,8 @@ namespace WPFApp.ViewModels
     public  class BaseViewModel: INotifyPropertyChanged
     {
         public DataStore DataStore = new DataStore();
+        private string _userid;
+        public string Userid { get => _userid; set => _userid = value; }    
         public BaseViewModel()
         {
 
