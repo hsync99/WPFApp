@@ -9,9 +9,38 @@
         mc:Ignorable="d"
        
         Title="MenuWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock x:Name="TBuserid" Text="{Binding userid}" FontSize="50" HorizontalAlignment="Center" Foreground="Red">
-            
-        </TextBlock>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"> 
+                
+            </ColumnDefinition>
+            <ColumnDefinition Width="*">
+               
+            </ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>   
+        </Grid.RowDefinitions>
+       
+        <TextBlock x:Name="TBuserid" 
+                   Text="{Binding userid}" 
+                   FontSize="10" 
+                   Grid.Column="0"
+                   HorizontalAlignment="Left" 
+                   Foreground="Red"/>
+
+        <ListView  Grid.Column="1" ItemsSource="{Binding Buttons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+           
+        </ListView>
+      
+
+
+
+
     </Grid>
 </Window>
