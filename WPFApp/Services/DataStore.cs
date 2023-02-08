@@ -19,7 +19,7 @@ namespace WPFApp.Services
                 {
                     var rdata = realm.All<Models.DB.User>();
                     ruser = realm.All<Models.DB.User>().Where(x => x.Username == username).FirstOrDefault();
-                    u.ID= ruser.ID;
+                    u.ID = ruser.ID;
                     u.ID = ruser.ID;
 
                     u.Password = ruser.Password;
@@ -49,21 +49,47 @@ namespace WPFApp.Services
         {
             User u = new User();
             u = user;
+            bool userisalreadyexists = UserAlreadyExists(u.Username);
+            if (!userisalreadyexists)
+            {
+                try
+                {
+                    using (Realm realm = Realm.GetInstance())
+                    {
+                        realm.Write(() =>
+                        {
+                            realm.Add(new Models.DB.User(u), true);
+                        });
+                    }
+                    return user;
+                }
+
+                catch (Exception e)
+                {
+                    throw new Exception();
+                }
+            }
+            else
+            {
+                return null;
+            }
+          
+        }
+        public  bool UserAlreadyExists(string username)
+        {
+            Models.DB.User dbu = new Models.DB.User();
+           List<Models.DB.User> ulist= new List<Models.DB.User>();
             try
             {
                 using (Realm realm = Realm.GetInstance())
                 {
-                    realm.Write(() =>
-                    {
-                        realm.Add(new Models.DB.User(u), true);
-                    });
+                    ulist = realm.All<Models.DB.User>().Where(x => x.Username == username).ToList();
+                    return ulist.Count > 0;
                 }
-                return user;
             }
-
             catch (Exception e)
             {
-                throw new Exception();
+                return true;
             }
         }
     }
