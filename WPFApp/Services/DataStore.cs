@@ -49,6 +49,8 @@ namespace WPFApp.Services
         {
             User u = new User();
             u = user;
+            u.Username = u.Username.ToLower();
+           
             bool userisalreadyexists = UserAlreadyExists(u.Username);
             if (!userisalreadyexists)
             {
