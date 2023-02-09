@@ -21,7 +21,7 @@ namespace WPFApp.ViewModels
 
 
             Buttons = new List<Button>();
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 70; i++)
             {
                 Btn = new Button();
                 Btn.Height = 50;

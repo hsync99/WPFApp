@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
+        WindowState="Maximized"
+        WindowStyle="None"
         xmlns:vm ="clr-namespace:WPFApp.ViewModels" d:DataContext="{d:DesignInstance Type=vm:LoginViewModel}"
         mc:Ignorable="d"
         
