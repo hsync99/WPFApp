@@ -32,5 +32,13 @@ namespace WPFApp.Views
             
             //TBuserid.Text = userid;
         }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListView view = (ListView)sender;
+            var index = view.SelectedIndex;
+            var selectedItem = view.SelectedItem;
+            _menuViewModel.SelectItemByIndexInList(selectedItem);
+        }
     }
 }

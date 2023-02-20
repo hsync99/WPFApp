@@ -7,8 +7,7 @@
         xmlns:local="clr-namespace:WPFApp.Views"
         xmlns:vm ="clr-namespace:WPFApp.ViewModels" d:DataContext="{d:DesignInstance Type=vm:MenuViewModel}"
         mc:Ignorable="d"
-       WindowState="Maximized"
-        WindowStyle="None"
+      
         Title="MenuWindow" Height="450" Width="800">
     <Grid >
         <Grid.ColumnDefinitions>
@@ -32,13 +31,13 @@
                    
                    />
 
-        <ListView  Grid.Column="1" ItemsSource="{Binding Buttons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-           
+        <ListView  Grid.Column="1" ItemsSource="{Binding InstalledApps}" SelectionChanged="ListView_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding DisplayName}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
         </ListView>
       
 
