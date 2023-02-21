@@ -24,8 +24,8 @@ namespace WPFApp
         {
             InitializeComponent();
             DataContext = new LoginViewModel();
-
-            //xyu
+          
+          
         }
     }
 }

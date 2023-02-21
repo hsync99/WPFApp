@@ -16,10 +16,10 @@ namespace WPFApp.ViewModels
         private string _password;
         public string UserName { get => _userName; set => _userName = value; }
         public string Password { get => _password; set => _password = value; }
-
+        public MainWindow mw;
         private RelayCommand _loginCommand;
         private RelayCommand _registrationCommand;
-       
+
       
         public RelayCommand LoginCommand
         {
@@ -49,6 +49,10 @@ namespace WPFApp.ViewModels
         var user = await   DataStore.Login(UserName, Password);
            MenuWindow menuWindow= new MenuWindow(user.ID);
             menuWindow.ShowDialog();
+           foreach(MainWindow mw in App.Current.Windows)
+            {
+                mw.Close();  
+            }
             
         }
         public async void Registration()

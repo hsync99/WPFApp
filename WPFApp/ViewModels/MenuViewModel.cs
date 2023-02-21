@@ -13,8 +13,6 @@ namespace WPFApp.ViewModels
 {
     public class MenuViewModel:BaseViewModel
     {
-        private List<string> app;
-        public List<string> App { get=> app; set => app = value; }
         private string _userid;
         public string userid { get => _userid; set => _userid = value; }
         private Button _btn;
@@ -31,18 +29,7 @@ namespace WPFApp.ViewModels
         string registry_key_64 = @"SOFTWARE\WoW6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
         public MenuViewModel()
         {
-            
-            //App = new List<string>();
-
-
-            //Buttons = new List<Button>();
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    Btn = new Button();
-            //    Btn.Height = 50;
-            //    Btn.Width = 50;
-            //    Buttons.Add(Btn);
-            //}
+           
             GetAllInstalledApps();
 
         }
@@ -57,19 +44,9 @@ namespace WPFApp.ViewModels
             IApp = new InstalledApp();
             InstalledApps = new List<InstalledApp>();
             InstalledApps = GetFullListInstalledApplication();
-           InstalledApp app = new InstalledApp();
+            InstalledApp app = new InstalledApp();
             foreach(var a in InstalledApps) 
             {
-                //if(a.DisplayName == "AnyDesk")
-                //{
-                //    app.DisplayIcon= a.DisplayIcon;
-                //    string[] formattedDI = a.DisplayIcon.Split(',');
-
-
-                //    app.DisplayName = a.DisplayName;
-                //    app.InstallationLocation = a.InstallationLocation;
-                //    Process.Start(formattedDI[0]);
-                //}
                 IApp.DisplayName = a.DisplayName;
                 string[] formattedDI = a.DisplayIcon.Split(',');
                 IApp.InstallationLocation = formattedDI[0];
