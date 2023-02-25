@@ -16,6 +16,7 @@ namespace WPFApp.Models.UI
         public string Password { get; set; }
         public string Email { get; set; }
         public int Role { get; set; } = 0;
+        
         public User() { 
         }
         public User(Models.DB.User u)

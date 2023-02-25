@@ -15,15 +15,12 @@ namespace WPFApp.ViewModels
     {
         private string _userid;
         public string userid { get => _userid; set => _userid = value; }
-        private Button _btn;
-        public Button Btn { get=> _btn; set => _btn = value; }  
-        private List<Button> _buttons;
+       
         private List<InstalledApp> _installedApps;
         public List<InstalledApp> InstalledApps { get=> _installedApps; set => _installedApps = value; }
 
         private InstalledApp _iapp;
         public InstalledApp IApp { get=>_iapp; set => _iapp = value; }
-        public List<Button> Buttons { get=>_buttons; set => _buttons = value; }
         private const string keyBase = @"SOFTWARE\WoW6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
         //@"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths";
         string registry_key_64 = @"SOFTWARE\WoW6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
@@ -108,10 +105,18 @@ namespace WPFApp.ViewModels
         }
        public void SelectItemByIndexInList(object selecteditem)
         {
-           var a = selecteditem as InstalledApp;
-            string b = a.DisplayIcon;
-            string[] formattedDI = b.Split(',');
-            Process.Start(formattedDI[0]);
+            try
+            {
+                var a = selecteditem as InstalledApp;
+                string b = a.DisplayIcon;
+                string[] formattedDI = b.Split(',');
+                Process.Start(formattedDI[0]);
+            }
+            catch (Exception ex)
+            {
+
+            }
+           
         }
     }
 }

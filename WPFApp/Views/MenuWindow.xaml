@@ -7,22 +7,17 @@
         xmlns:local="clr-namespace:WPFApp.Views"
         xmlns:vm ="clr-namespace:WPFApp.ViewModels" d:DataContext="{d:DesignInstance Type=vm:MenuViewModel}"
         mc:Ignorable="d"
-      
+        WindowState="Maximized"
+        WindowStyle="None"
         Title="MenuWindow" Height="450" Width="800">
-    <Grid >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"> 
-                
-            </ColumnDefinition>
-            <ColumnDefinition Width="*">
-               
-            </ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>   
-        </Grid.RowDefinitions>
-       
-        <TextBlock x:Name="TBuserid" 
+    <Grid>
+        <TabControl>
+            <TabItem Header="PROFLIE">
+                <StackPanel>
+                    <TextBlock Text="THIS IS PROFILE TABPAGE">
+
+                    </TextBlock>
+                    <TextBlock x:Name="TBuserid" 
                    Text="{Binding userid}" 
                    FontSize="10" 
                    Grid.Column="0"
@@ -30,19 +25,18 @@
                    Foreground="Red"
                    
                    />
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="APPS">
+                <ListView  Grid.Column="1" ItemsSource="{Binding InstalledApps}" SelectionChanged="ListView_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DisplayName}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
 
-        <ListView  Grid.Column="1" ItemsSource="{Binding InstalledApps}" SelectionChanged="ListView_SelectionChanged">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding DisplayName}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-
-        </ListView>
-      
-
-
-
-
+                </ListView>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
