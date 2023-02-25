@@ -17,6 +17,7 @@ namespace WPFApp.Models.DB
         public string Password { get; set; }    
         public string Email { get; set; }
         public int Role { get; set; } = 0;
+        public double Balance { get; set; }
         public User()
         {
 
@@ -30,8 +31,8 @@ namespace WPFApp.Models.DB
             Username = u.Username;
             Password = u.Password;
             Email = u.Email;
-            Role = u.Role;  
-            
+            Role = u.Role;
+            Balance = u.Balance;
 
         }
     }

@@ -12,10 +12,10 @@
  
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#03252526" >
-      
+
         <Border Padding="25" Margin="25" HorizontalAlignment="Center" Width="500" BorderThickness="2" 
                  CornerRadius="6">
-        <StackPanel >
+            <StackPanel >
 
                 <TextBlock   Text="" Margin="10" FontSize="50"  FontWeight="Heavy" HorizontalAlignment="Center"
                              TextDecorations="Strikethrough" />
@@ -25,20 +25,22 @@
                     <TextBox Background="#03252526" FontWeight="Bold"   Text="{Binding UserName}"
                              BorderThickness="0" 
                              VerticalContentAlignment="Center" FontSize="20">
-                   
-                </TextBox>
-            </Border>
+
+                    </TextBox>
+                </Border>
                 <TextBlock  FontWeight="Heavy" FontSize="25"  Text="Password" />
                 <Border BorderThickness="2"  CornerRadius="6" Height="50">
                     <TextBox  Text="{Binding Password}" FontSize="20"   Background="#03252526" BorderThickness="0" VerticalContentAlignment="Center"/>
-            </Border>
+                </Border>
                 <Button Background ="#03252526" 
                         Height="35" 
-                         Command="{Binding LoginCommand}"
-                        BorderThickness="0" >
+                      Command="{Binding LoginCommand}"
+                        BorderThickness="0"
+                      
+                        >
                     <Button.Content>
                         <TextBlock Text="LOGIN"  FontWeight="Heavy" >
-                            
+
                         </TextBlock>
                     </Button.Content>
                 </Button>
@@ -58,4 +60,5 @@
         </Border>
 
     </Grid>
+
 </Window>

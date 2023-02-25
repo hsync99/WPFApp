@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFApp.ViewModels;
+using WPFApp.Views;
+
 namespace WPFApp
 {
     
@@ -37,12 +39,17 @@ namespace WPFApp
 
         private const int MF_BYPOSITION = 0x0400;
         private const int MF_DISABLED = 0x0002;
+
+        public NavigationService nav;
+        LoginViewModel vm = new LoginViewModel();
         public MainWindow()
         {
-            InitializeComponent();
-            DataContext = new LoginViewModel();
-            this.SourceInitialized += new EventHandler(Window1_SourceInitialized);
 
+            InitializeComponent();
+            DataContext = vm;
+            vm.mw = this;
+            this.SourceInitialized += new EventHandler(Window1_SourceInitialized);
+            
         }
         void Window1_SourceInitialized(object sender, EventArgs e)
         {
@@ -56,5 +63,7 @@ namespace WPFApp
             RemoveMenu(hmenu, cnt - 2, MF_DISABLED | MF_BYPOSITION);
             DrawMenuBar(windowHandle); //Redraw the menu bar
         }
+
+      
     }
 }

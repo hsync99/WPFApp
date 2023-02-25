@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <None Remove="network.png" />
+    <None Remove="Resources\Profile.png" />
+    <None Remove="Views\Profile.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +23,8 @@
     <Resource Include="Resources\network.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Profile.png" />
+    <Resource Include="Views\Profile.png" />
   </ItemGroup>
 
 </Project>

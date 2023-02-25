@@ -5,17 +5,33 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Management;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using WPFApp.Views;
+using WPFApp.Models.UI;
 
 namespace WPFApp.ViewModels
 {
     public class MenuViewModel:BaseViewModel
     {
         private string _userid;
-        public string userid { get => _userid; set => _userid = value; }
-       
+        public string userid { get; set; }
+
+        private string _fname;
+        private string _lname;
+        private string _email;
+
+        private Models.UI.User _user;
+        public Models.UI.User User { get => _user; set => _user = value; }
+        public string Fname { get=>_fname; set => _fname = value; }
+        public string Lname { get => _lname;set => _lname = value; }
+        public string Email { get => _email;set=> _email = value; } 
+
+        public string balance;
+        public string Balance { get => balance; set => balance = value; }   
+
         private List<InstalledApp> _installedApps;
         public List<InstalledApp> InstalledApps { get=> _installedApps; set => _installedApps = value; }
 
@@ -26,16 +42,22 @@ namespace WPFApp.ViewModels
         string registry_key_64 = @"SOFTWARE\WoW6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
         public MenuViewModel()
         {
-           
-            GetAllInstalledApps();
+            
 
+            GetAllInstalledApps();
+           // GetUserById(userid);
+        
         }
+ 
+        
+        
         public class InstalledApp
         {
             public string DisplayIcon { get; set; } 
             public string DisplayName { get; set; }
             public string InstallationLocation { get; set; }
         }
+
         public void GetAllInstalledApps()
         {
             IApp = new InstalledApp();

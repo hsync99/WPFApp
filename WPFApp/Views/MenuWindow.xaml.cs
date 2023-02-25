@@ -13,7 +13,9 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFApp.Services;
 using WPFApp.ViewModels;
+using WPFApp.Models.UI;
 namespace WPFApp.Views
 {
     /// <summary>
@@ -35,20 +37,26 @@ namespace WPFApp.Views
 
         private const int MF_BYPOSITION = 0x0400;
         private const int MF_DISABLED = 0x0002;
-        MenuViewModel _menuViewModel = new MenuViewModel();   
-        public MenuWindow()
+        MenuViewModel _menuViewModel = new MenuViewModel();
+        public string UserID;
+        public MenuWindow(User user)
         {
-            
-        }
-        public MenuWindow(string userid)
-        {
+           
             InitializeComponent();
-            _menuViewModel.userid = userid;
+           
+           _menuViewModel.userid = user.ID;
+            _menuViewModel.Fname = user.Fname;
+            _menuViewModel.Lname = user.Lname;
+            _menuViewModel.Email = user.Email;
+            var b = user.Balance + 15000;
+            _menuViewModel.Balance = b.ToString(); ;
             DataContext = _menuViewModel;
             this.SourceInitialized += new EventHandler(Window1_SourceInitialized);
 
             //TBuserid.Text = userid;
         }
+
+  
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -68,6 +76,19 @@ namespace WPFApp.Views
             //remove the extra menu line
             RemoveMenu(hmenu, cnt - 2, MF_DISABLED | MF_BYPOSITION);
             DrawMenuBar(windowHandle); //Redraw the menu bar
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+           // _menuViewModel.WindowLoaded(UserID);
+
+            //Models.UI.User U = new Models.UI.User();
+            //U = await _menuViewModel.DataStore.GetUserByid(UserID);
+            //_menuViewModel.Fname = U.Fname;
+            //_menuViewModel.Lname = U.Lname;
+            //_menuViewModel.Balance = U.Balance + 1000.ToString();
+            //_menuViewModel.Email = U.Email;
+
         }
     }
 }

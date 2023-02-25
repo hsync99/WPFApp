@@ -9,20 +9,60 @@
         mc:Ignorable="d"
         WindowState="Maximized"
         WindowStyle="None"
+        Loaded="Window_Loaded"
         Title="MenuWindow" Height="450" Width="800">
     <Grid>
         <TabControl>
             <TabItem Header="PROFLIE">
                 <StackPanel>
-                    <TextBlock Text="THIS IS PROFILE TABPAGE">
+                    <Image Source="/Resources/Profile.png" Stretch="Uniform" Width="200" Height="200" HorizontalAlignment="Center" VerticalAlignment="Top">
 
-                    </TextBlock>
+                    </Image>
                     <TextBlock x:Name="TBuserid" 
                    Text="{Binding userid}" 
                    FontSize="10" 
                    Grid.Column="0"
-                   HorizontalAlignment="Left" 
+                   HorizontalAlignment="Center" 
                    Foreground="Red"
+                   />
+
+                    <TextBlock x:Name="First_Name" 
+                   Text="{Binding Fname }" 
+                   FontSize="10" 
+                   FontWeight="Heavy"
+                   Grid.Column="0"
+                   HorizontalAlignment="Center" 
+                    Foreground="Black"
+                   
+                   />
+                    <TextBlock x:Name="Last_Name" 
+                   Text="{Binding Lname}" 
+                   FontSize="10" 
+                   FontWeight="Heavy"
+                   Grid.Column="0"
+                   HorizontalAlignment="Center" 
+                    Foreground="Black"
+                   
+                   
+                   />
+                    <TextBlock 
+                   Text="{Binding Email}" 
+                   FontSize="10" 
+                   FontWeight="Heavy"
+                   Grid.Column="0"
+                   HorizontalAlignment="Center" 
+                    Foreground="Black"
+                   
+                   
+                   />
+                    <TextBlock 
+                   Text="{Binding Balance}" 
+                   FontSize="10" 
+                   FontWeight="Heavy"
+                   Grid.Column="0"
+                   HorizontalAlignment="Center" 
+                    Foreground="Black"
+                   
                    
                    />
                 </StackPanel>

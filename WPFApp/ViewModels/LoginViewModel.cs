@@ -8,6 +8,8 @@ using System.Windows.Input;
 using WPFApp.Views;
 using WPFApp.Models.UI;
 using WPFApp.Models;
+using System.Windows.Navigation;
+
 namespace WPFApp.ViewModels
 {
     public class LoginViewModel:BaseViewModel
@@ -19,7 +21,7 @@ namespace WPFApp.ViewModels
         public MainWindow mw;
         private RelayCommand _loginCommand;
         private RelayCommand _registrationCommand;
-
+        NavigationService _navigationSerice;
       
         public RelayCommand LoginCommand
         {
@@ -47,14 +49,16 @@ namespace WPFApp.ViewModels
         public async void Login()
         {
         var user = await   DataStore.Login(UserName, Password);
-           MenuWindow menuWindow= new MenuWindow(user.ID);
+           
+           MenuWindow menuWindow= new MenuWindow(user);
             menuWindow.ShowDialog();
        
             
         }
         public async void Registration()
         {
-            User u = new User();    
+            User u = new User();
+            u.Balance = 15000;
             u.Username= _userName;
             u.Password= _password;  
             u.ID = Guid.NewGuid().ToString();

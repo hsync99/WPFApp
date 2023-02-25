@@ -9,8 +9,36 @@ namespace WPFApp.Services
 {
     public class DataStore : IDataStore
     {
+        public async Task<User> GetUserByid(string userid)
+        {
+           Models.DB.User dbuser = new Models.DB.User();
+            User u = new User();
+            try
+            {
+                using(Realm realm = Realm.GetInstance())
+                {
+                    var udata = realm.All<Models.DB.User>();
+                    dbuser = udata.Where(x=> x.ID== userid).FirstOrDefault();
+                    u.Username = dbuser.Username;
+                    u.Password = dbuser.Password;   
+                    u.Balance = dbuser.Balance; 
+                    u.Lname = dbuser.Lname;
+                    u.Fname = dbuser.Fname;
+                    u.Email = dbuser.Email;
+                 
+                   
+                }
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+            return u;
+        }
+
         public async Task<User> Login(string username, string password)
         {
+
             Models.DB.User ruser = new Models.DB.User();
             User u = new User();
             try
@@ -19,9 +47,11 @@ namespace WPFApp.Services
                 {
                     var rdata = realm.All<Models.DB.User>();
                     ruser = realm.All<Models.DB.User>().Where(x => x.Username == username).FirstOrDefault();
-                    u.ID = ruser.ID;
-                    u.ID = ruser.ID;
 
+                    
+                 
+                    u.ID = ruser.ID;
+                    u.Email = ruser.Email;
                     u.Password = ruser.Password;
                     u.Fname = ruser.Fname;
                     u.Lname = ruser.Lname;
